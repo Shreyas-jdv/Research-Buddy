@@ -194,4 +194,4 @@ Add a `LICENSE` file if you intend to distribute the project under an open-sourc
 
 ---
 
-**Research Buddy: Better questions. Stronger experiments. One idea at a time.**
+
