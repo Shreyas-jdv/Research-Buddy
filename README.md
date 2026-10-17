@@ -190,7 +190,7 @@ Research Buddy provides AI-assisted research suggestions. Its outputs may be ina
 
 ## 📄 License
 
-This project is licensed under the MIT License.
+This project is licensed under the [MIT License](LICENSE).
 
 You are free to use, modify, and distribute the software in accordance with the terms of the license.
 
