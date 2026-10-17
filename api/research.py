@@ -153,11 +153,17 @@ Keep the plan concrete enough for a student developer to execute.
 
         except json.JSONDecodeError:
             return self.send_json(400, {"error": "Invalid JSON request."})
-        except Exception:
-            # Do not expose API keys or internal stack traces.
-            return self.send_json(
-                502, {"error": "Research generation failed. Check API access and server logs."}
+
+        except Exception as exc:
+            print(
+                f"Research generation failed: "
+                f"{type(exc).__name__}: {exc}"
             )
+            return self.send_json(
+                502,
+                {"error": "Research generation failed. Check Vercel logs."}
+            )
+
 
     def do_OPTIONS(self):
         return self.send_json(405, {"error": "Method not allowed."})
@@ -169,3 +175,7 @@ Keep the plan concrete enough for a student developer to execute.
         self.send_header("Cache-Control", "no-store")
         self.end_headers()
         self.wfile.write(payload)
+
+
+        
+
