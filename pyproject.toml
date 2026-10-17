@@ -1,0 +1,12 @@
+
+[project]
+name = "research-cofounder"
+version = "1.0.0"
+requires-python = ">=3.12,<3.14"
+dependencies = ["openai"]
+
+[tool.uv]
+package = false
+
+[tool.vercel]
+entrypoint = "api.research:handler"
