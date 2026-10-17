@@ -1,0 +1,490 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Research Co-Founder</title>
+<style>
+:root {
+  --bg:#0b0e13; --panel:#121720; --panel2:#171e29;
+  --border:#27303d; --text:#f1f3f7; --muted:#9aa6b7;
+  --gold:#f2c66d; --green:#83d6ae; --blue:#91baff;
+}
+* { box-sizing:border-box; }
+body {
+  margin:0; background:var(--bg); color:var(--text);
+  font-family:Inter, ui-sans-serif,system-ui,-apple-system,sans-serif;
+  font-size:14px; line-height:1.6;
+}
+button,textarea,select { font:inherit; }
+button { cursor:pointer; }
+.app { max-width:1440px; margin:auto; padding:24px 30px 50px; }
+header {
+  display:flex; justify-content:space-between; align-items:center;
+  gap:18px; padding-bottom:22px; border-bottom:1px solid var(--border);
+}
+.brand { display:flex; align-items:center; gap:12px; }
+.logo {
+  display:grid; place-items:center; width:43px; height:43px;
+  border-radius:13px; background:#292517; color:var(--gold);
+  border:1px solid #514326; font-size:23px;
+}
+.brand h1 { font-size:17px; letter-spacing:-.5px; margin:0; }
+.brand p { margin:0; color:var(--muted); font-size:12px; }
+.header-right { display:flex; align-items:center; gap:10px; }
+.status {
+  color:var(--green); background:#14251f; border:1px solid #28483b;
+  padding:6px 10px; border-radius:30px; font-size:11px;
+}
+.small-btn,.secondary-btn {
+  color:var(--text); border:1px solid var(--border);
+  background:var(--panel); border-radius:9px; padding:9px 13px;
+}
+.hero { padding:35px 0 26px; }
+.eyebrow {
+  color:var(--gold); font-size:11px; font-weight:750;
+  letter-spacing:2px; text-transform:uppercase;
+}
+.hero h2 {
+  font-size:clamp(29px,4vw,43px); line-height:1.13;
+  letter-spacing:-1.7px; max-width:780px; margin:10px 0 12px;
+}
+.hero h2 span { color:var(--gold); }
+.hero p { color:var(--muted); max-width:710px; margin:0; font-size:14px; }
+.layout {
+  display:grid; grid-template-columns:minmax(300px,.83fr) minmax(0,1.5fr);
+  gap:20px; align-items:start;
+}
+.panel {
+  background:var(--panel); border:1px solid var(--border);
+  border-radius:16px; overflow:hidden;
+}
+.panel-head {
+  padding:17px 19px; border-bottom:1px solid var(--border);
+  display:flex; justify-content:space-between; gap:12px; align-items:center;
+}
+.panel-head h3 { margin:0; font-size:14px; }
+.step { font-size:11px; color:var(--muted); }
+.panel-body { padding:19px; }
+label { display:block; font-size:12px; font-weight:650; margin:0 0 8px; }
+textarea,select {
+  width:100%; color:var(--text); background:#0d1118;
+  border:1px solid var(--border); border-radius:10px; padding:12px;
+  outline:none;
+}
+textarea { min-height:150px; resize:vertical; line-height:1.6; }
+textarea:focus,select:focus { border-color:#ad8d4b; }
+.field { margin-bottom:19px; }
+.hint { color:var(--muted); font-size:11px; margin-top:7px; }
+.two { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.primary {
+  width:100%; background:var(--gold); color:#201909;
+  border:0; border-radius:10px; padding:13px 16px;
+  font-weight:800; transition:.2s;
+}
+.primary:hover { background:#ffda8a; transform:translateY(-1px); }
+.example {
+  display:flex; justify-content:space-between; gap:8px;
+  align-items:center; padding:12px 0 0;
+}
+.text-btn { background:none; border:0; color:var(--blue); padding:0; font-size:12px; }
+.note {
+  padding:12px; border:1px solid #3b3423; border-radius:10px;
+  color:#d7c69f; background:#211e17; font-size:11px; margin-top:16px;
+}
+.result-top {
+  padding:19px; display:flex; justify-content:space-between;
+  gap:12px; align-items:flex-start; border-bottom:1px solid var(--border);
+}
+.result-top h3 { margin:0 0 4px; font-size:15px; }
+.result-top p { color:var(--muted); font-size:12px; margin:0; }
+.pill {
+  font-size:10px; padding:5px 8px; border-radius:20px;
+  color:var(--gold); border:1px solid #514326; background:#292517;
+  white-space:nowrap;
+}
+.tabs {
+  display:flex; gap:5px; padding:10px 13px;
+  border-bottom:1px solid var(--border); overflow-x:auto;
+}
+.tab {
+  flex-shrink:0; background:transparent; color:var(--muted);
+  border:1px solid transparent; padding:8px 10px; border-radius:8px;
+  font-size:11px;
+}
+.tab.active { background:var(--panel2); color:var(--text); border-color:var(--border); }
+.output { padding:20px; min-height:480px; }
+.placeholder {
+  min-height:390px; display:flex; flex-direction:column;
+  align-items:center; justify-content:center; text-align:center;
+  padding:30px; color:var(--muted);
+}
+.placeholder-icon { font-size:35px; margin-bottom:12px; }
+.placeholder h4 { color:var(--text); font-size:16px; margin:0 0 7px; }
+.placeholder p { max-width:340px; font-size:12px; margin:0; }
+.section-title { font-size:11px; color:var(--gold); letter-spacing:1.4px; font-weight:800; margin:0 0 12px; text-transform:uppercase; }
+.output h2 { font-size:23px; line-height:1.3; letter-spacing:-.5px; margin:0 0 12px; }
+.output h4 { margin:20px 0 7px; font-size:13px; }
+.output p { color:#c4ccd7; margin:0 0 11px; font-size:12px; }
+.output ul,.output ol { padding-left:20px; margin:7px 0 16px; color:#c4ccd7; font-size:12px; }
+.output li { padding:3px 0; }
+.callout {
+  border:1px solid var(--border); background:#0e131b;
+  padding:13px; border-radius:10px; margin:14px 0;
+}
+.callout strong { color:var(--text); }
+.metric-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin:14px 0; }
+.metric {
+  border:1px solid var(--border); background:#0e131b;
+  padding:13px; border-radius:10px;
+}
+.metric b { display:block; font-size:19px; color:var(--gold); }
+.metric span { font-size:11px; color:var(--muted); }
+.actions {
+  display:flex; justify-content:space-between; align-items:center;
+  gap:10px; flex-wrap:wrap; padding:13px 19px;
+  border-top:1px solid var(--border);
+}
+.actions span { color:var(--muted); font-size:11px; }
+.actions-right { display:flex; gap:8px; }
+.hidden { display:none!important; }
+.footer {
+  display:flex; justify-content:space-between; gap:15px;
+  color:var(--muted); font-size:11px; padding:22px 0;
+}
+@media(max-width:850px) {
+  .app { padding:17px 14px 35px; }
+  .layout { grid-template-columns:1fr; }
+  .hero { padding-top:26px; }
+}
+@media(max-width:480px) {
+  .status { display:none; }
+  .two { grid-template-columns:1fr; gap:0; }
+  .header-right .small-btn { padding:8px; }
+  .hero h2 { letter-spacing:-1px; }
+}
+</style>
+</head>
+<body>
+<div class="app">
+  <header>
+    <div class="brand">
+      <div class="logo">⌘</div>
+      <div>
+        <h1>Research Co-Founder</h1>
+        <p>Your AI collaborator for research</p>
+      </div>
+    </div>
+    <div class="header-right">
+      <span class="status" id="modeStatus">● DEMO MODE</span>
+      <button class="small-btn" id="resetBtn">Reset ↺</button>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="eyebrow">IDEA → EVIDENCE → EXPERIMENT</div>
+    <h2>Don't just have an idea.<br><span>Make it researchable.</span></h2>
+    <p>Turn a rough thought into a testable hypothesis, a defensible experiment, and a reproducible research plan. Your co-founder challenges the idea instead of simply agreeing with you.</p>
+  </section>
+
+  <main class="layout">
+    <section class="panel">
+      <div class="panel-head">
+        <h3>01 / Research brief</h3><span class="step">YOUR INPUT</span>
+      </div>
+      <div class="panel-body">
+        <div class="field">
+          <label for="idea">What's your research idea?</label>
+          <textarea id="idea" placeholder="e.g. Can an AI agent detect when its own information is unreliable?">Can an AI agent detect when its own information is unreliable and decide when it should ask a human for help?</textarea>
+          <div class="example">
+            <span class="hint">A rough idea is enough to start.</span>
+            <button class="text-btn" id="exampleBtn">Try another idea ↗</button>
+          </div>
+        </div>
+        <div class="two">
+          <div class="field">
+            <label for="area">Research area</label>
+            <select id="area">
+              <option>Agentic AI</option>
+              <option>LLM Evaluation</option>
+              <option>AI Safety & Alignment</option>
+              <option>Healthcare AI</option>
+              <option>Machine Learning</option>
+              <option>Natural Language Processing</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="level">Project scope</label>
+            <select id="level">
+              <option>Weekend prototype</option>
+              <option>Semester research project</option>
+              <option>Conference-style study</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label for="resources">Available resources</label>
+          <select id="resources">
+            <option>One developer, laptop, API access</option>
+            <option>Small team and GPU access</option>
+            <option>Limited compute, open-source models</option>
+            <option>Research team and compute budget</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="priority">What matters most?</label>
+          <select id="priority">
+            <option>Strong experimental evidence</option>
+            <option>Novelty and publication potential</option>
+            <option>Build a working demo quickly</option>
+            <option>Social impact and practical value</option>
+          </select>
+        </div>
+        <button class="primary" id="generateBtn">Develop my research plan&nbsp; →</button>
+        <div class="note">✳ Research-first design: the plan should include a way to prove the hypothesis wrong, not just a way to demonstrate success.</div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="result-top">
+        <div>
+          <h3>02 / Research workspace</h3>
+          <p>Your idea, challenged and structured.</p>
+        </div>
+        <span class="pill" id="resultStatus">AWAITING IDEA</span>
+      </div>
+      <div class="tabs">
+        <button class="tab active" data-tab="overview">Overview</button>
+        <button class="tab" data-tab="experiments">Experiments</button>
+        <button class="tab" data-tab="evaluation">Evaluation</button>
+        <button class="tab" data-tab="protocol">Protocol</button>
+      </div>
+      <div class="output" id="output">
+        <div class="placeholder">
+          <div class="placeholder-icon">⌬</div>
+          <h4>Your next research project starts here.</h4>
+          <p>Enter your idea and develop a structured research plan with a falsifiable hypothesis, experiments, evaluation metrics and reproducibility checklist.</p>
+        </div>
+      </div>
+      <div class="actions">
+        <span id="outputHint">Generated plans are prototypes, not validated research findings.</span>
+        <div class="actions-right">
+          <button class="secondary-btn" id="copyBtn">Copy plan</button>
+          <button class="secondary-btn" id="downloadBtn">Export ↓</button>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div class="footer">
+    <span>RESEARCH CO-FOUNDER · EARLY PROTOTYPE</span>
+    <span>Think critically. Test rigorously. Report honestly.</span>
+  </div>
+</div>
+
+<script>
+const $ = id => document.getElementById(id);
+let currentTab = "overview";
+let currentPlan = null;
+let exampleIndex = 0;
+
+const examples = [
+  "Can an AI agent detect when its own information is unreliable and decide when it should ask a human for help?",
+  "Can retrieval-augmented generation reduce unsupported claims in AI-generated medical explanations?",
+  "Can multiple AI agents identify errors in each other's code more reliably than a single agent?"
+];
+
+function escapeHTML(value) {
+  return String(value).replace(/[&<>"']/g, c => ({
+    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+  }[c]));
+}
+
+function makePlan() {
+  const idea = $("idea").value.trim();
+  if (!idea) {
+    $("idea").focus();
+    $("idea").style.borderColor = "#f08080";
+    return null;
+  }
+  $("idea").style.borderColor = "";
+  return {
+    idea,
+    area: $("area").value,
+    level: $("level").value,
+    resources: $("resources").value,
+    priority: $("priority").value
+  };
+}
+
+function generateDemo(plan) {
+  const idea = plan.idea;
+  return {
+    question: "Under what conditions can an AI agent recognise insufficient evidence and choose an appropriate next action?",
+    hypothesis: "An agent that explicitly checks evidence sufficiency and uses a predefined escalation policy will make fewer unsupported claims than an answer-only baseline, at the cost of additional latency and review requests.",
+    rationale: "The central challenge is not whether an agent can say it is uncertain. It is whether its uncertainty assessment leads to measurably better decisions on unseen cases.",
+    novelty: "Treat novelty as an open question. Search recent papers, benchmarks and agent evaluation studies before claiming this approach is new.",
+    gap: "A useful study should separate detecting missing evidence from choosing what to do about it, and measure both answer quality and the cost of escalation.",
+    experiments: [
+      ["Baseline: answer only","Ask a standard model to answer each test case without a dedicated evidence-checking step."],
+      ["Evidence-checking agent","Extract claims, retrieve relevant evidence and label each claim as supported, contradicted or unresolved."],
+      ["Policy-controlled agent","Use the evidence assessment to answer, retrieve more evidence, or request human review under a fixed budget."],
+      ["Ablation: remove escalation","Keep evidence checking but disable human escalation to test whether the action policy adds value."]
+    ],
+    metrics: [
+      ["Unsupported claim rate","Fraction of answer claims that lack adequate support."],
+      ["Detection recall","Fraction of deliberately unsupported or contradicted claims correctly flagged."],
+      ["Escalation precision","Fraction of cases sent for review that genuinely require additional evidence or judgment."],
+      ["Task success","Fraction of cases that meet a predefined answer-quality rubric."],
+      ["Cost and latency","API calls, elapsed time and estimated cost per completed case."]
+    ],
+    falsification: "The hypothesis is weakened if the policy-controlled agent does not reduce unsupported claims versus the baseline, or if any improvement disappears on held-out cases. Report trade-offs if reliability improves only by escalating almost every case.",
+    risks: [
+      "The evaluator may share the generator's blind spots.",
+      "Synthetic test cases may not represent real-world queries.",
+      "A model's self-reported confidence may not be calibrated.",
+      "The system may improve the measured metric while degrading helpfulness or latency."
+    ],
+    protocol: [
+      "Define supported, contradicted and insufficient-evidence labels before running experiments.",
+      "Create a fixed dataset with source documents, expected claim labels and rationale.",
+      "Split development and held-out test cases to reduce tuning leakage.",
+      "Fix model versions, prompts, sampling settings, tools and iteration limits.",
+      "Run each condition on identical cases and record failures as well as successes.",
+      "Save raw inputs, outputs, evidence IDs, model configuration and evaluation results.",
+      "Report sample size, uncertainty and limitations; do not infer causation from anecdotes."
+    ],
+    next: [
+      "Find and read the closest 5–10 papers and benchmarks.",
+      "Write a one-page protocol and freeze the evaluation rubric.",
+      "Build a small pilot dataset with manually verified labels.",
+      "Run the answer-only baseline before implementing the agent policy."
+    ]
+  };
+}
+
+function renderOverview(p, d) {
+  return `<div class="section-title">Research direction</div>
+    <h2>${escapeHTML(p.idea)}</h2>
+    <p>${escapeHTML(d.rationale)}</p>
+    <div class="callout"><strong>Proposed research question</strong><p style="margin:8px 0 0">${escapeHTML(d.question)}</p></div>
+    <h4>Testable hypothesis</h4><p>${escapeHTML(d.hypothesis)}</p>
+    <div class="metric-grid">
+      <div class="metric"><b>3</b><span>Core experimental conditions</span></div>
+      <div class="metric"><b>5</b><span>Proposed evaluation metrics</span></div>
+      <div class="metric"><b>1</b><span>Held-out evaluation set</span></div>
+      <div class="metric"><b>4</b><span>Suggested experimental variants</span></div>
+    </div>
+    <h4>Novelty check</h4><p>${escapeHTML(d.novelty)}</p>
+    <div class="callout"><strong>What could prove you wrong?</strong><p style="margin:8px 0 0">${escapeHTML(d.falsification)}</p></div>
+    <h4>Recommended first action</h4><p>${escapeHTML(d.next[0])}</p>`;
+}
+
+function renderExperiments(d) {
+  return `<div class="section-title">Experimental design</div>
+    <h2>Test the mechanism, not the demo.</h2>
+    <p>Compare systems on the same cases under controlled conditions. These are proposed conditions, not experimental results.</p>
+    ${d.experiments.map((x,i)=>`<div class="callout"><strong>${i+1}. ${escapeHTML(x[0])}</strong><p style="margin:7px 0 0">${escapeHTML(x[1])}</p></div>`).join("")}
+    <h4>Control the variables</h4>
+    <ul><li>Use identical test cases and source documents.</li><li>Keep model settings and tool budgets consistent where possible.</li><li>Use the same pre-registered scoring rubric for all conditions.</li><li>Evaluate on held-out cases not used to tune prompts.</li></ul>
+    <h4>Falsification criterion</h4><p>${escapeHTML(d.falsification)}</p>`;
+}
+
+function renderEvaluation(d) {
+  return `<div class="section-title">Evaluation framework</div>
+    <h2>Measure reliability, not confidence theatre.</h2>
+    <p>Specify the scoring rules before inspecting results. Do not treat model-reported confidence as a calibrated probability.</p>
+    ${d.metrics.map((x,i)=>`<div class="callout"><strong>${i+1}. ${escapeHTML(x[0])}</strong><p style="margin:7px 0 0">${escapeHTML(x[1])}</p></div>`).join("")}
+    <h4>Minimum reporting checklist</h4>
+    <ul><li>Number of test cases and label distribution.</li><li>Per-condition scores, including failure cases.</li><li>Confidence intervals or other appropriate uncertainty estimates.</li><li>API calls, latency and cost alongside quality.</li><li>Results broken down by case difficulty and error type.</li></ul>`;
+}
+
+function renderProtocol(p,d) {
+  return `<div class="section-title">Reproducibility protocol</div>
+    <h2>Make the experiment repeatable.</h2>
+    <p>Suggested scope: ${escapeHTML(p.level)}. Resources: ${escapeHTML(p.resources)}.</p>
+    <h4>Before the experiment</h4>
+    <ul>${d.protocol.map(x=>`<li>${escapeHTML(x)}</li>`).join("")}</ul>
+    <h4>Threats to validity</h4>
+    <ul>${d.risks.map(x=>`<li>${escapeHTML(x)}</li>`).join("")}</ul>
+    <h4>Next actions</h4>
+    <ol>${d.next.map(x=>`<li>${escapeHTML(x)}</li>`).join("")}</ol>
+    <div class="callout"><strong>Research integrity</strong><p style="margin:7px 0 0">No literature search has been performed and no experiments have been run. Validate novelty, feasibility and metrics before treating this plan as research-ready.</p></div>`;
+}
+
+function renderTab() {
+  if (!currentPlan || !currentPlan.data) return;
+  const p = currentPlan.input, d = currentPlan.data;
+  const renderers = {
+    overview: () => renderOverview(p,d),
+    experiments: () => renderExperiments(d),
+    evaluation: () => renderEvaluation(d),
+    protocol: () => renderProtocol(p,d)
+  };
+  $("output").innerHTML = renderers[currentTab]();
+  document.querySelectorAll(".tab").forEach(b => b.classList.toggle("active", b.dataset.tab === currentTab));
+}
+
+$("generateBtn").addEventListener("click", () => {
+  const plan = makePlan();
+  if (!plan) return;
+  $("generateBtn").disabled = true;
+  $("generateBtn").textContent = "Structuring research plan…";
+  $("resultStatus").textContent = "DEMO OUTPUT";
+  $("modeStatus").textContent = "● DEMO MODE";
+  $("outputHint").textContent = "Illustrative plan. No AI API call or literature search has occurred.";
+  // Demo mode uses a transparent, local template. It does not call an AI model.
+  setTimeout(() => {
+    currentPlan = { input:plan, data:generateDemo(plan) };
+    currentTab = "overview";
+    renderTab();
+    $("generateBtn").disabled = false;
+    $("generateBtn").textContent = "Develop my research plan  →";
+  }, 250);
+});
+
+document.querySelectorAll(".tab").forEach(b => {
+  b.addEventListener("click", () => { currentTab = b.dataset.tab; renderTab(); });
+});
+
+$("exampleBtn").addEventListener("click", () => {
+  exampleIndex = (exampleIndex + 1) % examples.length;
+  $("idea").value = examples[exampleIndex];
+});
+
+$("resetBtn").addEventListener("click", () => {
+  $("idea").value = "";
+  currentPlan = null;
+  $("resultStatus").textContent = "AWAITING IDEA";
+  $("output").innerHTML = `<div class="placeholder"><div class="placeholder-icon">⌬</div><h4>Your next research project starts here.</h4><p>Enter your idea and develop a structured research plan with a falsifiable hypothesis, experiments, evaluation metrics and reproducibility checklist.</p></div>`;
+});
+
+function fullText() {
+  if (!currentPlan) return "";
+  const p = currentPlan.input, d = currentPlan.data;
+  return `RESEARCH CO-FOUNDER — RESEARCH PLAN\n\nIDEA: ${p.idea}\nAREA: ${p.area}\nSCOPE: ${p.level}\nRESOURCES: ${p.resources}\nPRIORITY: ${p.priority}\n\nRESEARCH QUESTION\n${d.question}\n\nHYPOTHESIS\n${d.hypothesis}\n\nRATIONALE\n${d.rationale}\n\nNOVELTY\n${d.novelty}\n\nEXPERIMENTS\n${d.experiments.map((x,i)=>`${i+1}. ${x[0]}\n${x[1]}`).join("\n\n")}\n\nMETRICS\n${d.metrics.map(x=>`${x[0]}: ${x[1]}`).join("\n")}\n\nFALSIFICATION\n${d.falsification}\n\nREPRODUCIBILITY\n${d.protocol.map((x,i)=>`${i+1}. ${x}`).join("\n")}\n\nRISKS\n${d.risks.map(x=>`- ${x}`).join("\n")}\n\nNEXT ACTIONS\n${d.next.map((x,i)=>`${i+1}. ${x}`).join("\n")}\n\nNOTE: Demo template output. No model call, literature search or experiment was performed.`;
+}
+
+$("copyBtn").addEventListener("click", async () => {
+  const text = fullText();
+  if (!text) { $("outputHint").textContent = "Generate a plan first."; return; }
+  try {
+    await navigator.clipboard.writeText(text);
+    $("outputHint").textContent = "Research plan copied to clipboard.";
+  } catch {
+    $("outputHint").textContent = "Clipboard access unavailable. Use Export instead.";
+  }
+});
+
+$("downloadBtn").addEventListener("click", () => {
+  const text = fullText();
+  if (!text) { $("outputHint").textContent = "Generate a plan first."; return; }
+  const blob = new Blob([text], {type:"text/plain;charset=utf-8"});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url; a.download = "research-plan.txt"; a.click();
+  URL.revokeObjectURL(url);
+});
+</script>
+</body>
+</html>
