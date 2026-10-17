@@ -188,9 +188,11 @@ Ideas, feedback, and contributions are welcome.
 
 Research Buddy provides AI-assisted research suggestions. Its outputs may be inaccurate, incomplete, or infeasible. Researchers remain responsible for verifying claims, reviewing the literature, and evaluating the validity of proposed methods.
 
-## 📄 License
+📄 License
 
-Add a `LICENSE` file if you intend to distribute the project under an open-source license.
+This project is licensed under the MIT License.
+
+You are free to use, modify, and distribute the software in accordance with the terms of the license.
 
 ---
 
