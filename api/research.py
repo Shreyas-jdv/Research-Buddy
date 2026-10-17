@@ -7,6 +7,12 @@ from openai import OpenAI
 
 
 class handler(BaseHTTPRequestHandler):
+    def do_GET(self):
+        return self.send_json(200, {
+            "status": "ok",
+            "message": "Research Co-Founder API is running. Submit an idea through the website."
+        })
+        
     def do_POST(self):
         # Basic request-size limit.
         try:
