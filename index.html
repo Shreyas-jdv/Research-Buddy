@@ -425,23 +425,50 @@ function renderTab() {
   document.querySelectorAll(".tab").forEach(b => b.classList.toggle("active", b.dataset.tab === currentTab));
 }
 
-$("generateBtn").addEventListener("click", () => {
+
+$("generateBtn").addEventListener("click", async () => {
   const plan = makePlan();
   if (!plan) return;
-  $("generateBtn").disabled = true;
-  $("generateBtn").textContent = "Structuring research plan…";
-  $("resultStatus").textContent = "DEMO OUTPUT";
-  $("modeStatus").textContent = "● DEMO MODE";
-  $("outputHint").textContent = "Illustrative plan. No AI API call or literature search has occurred.";
-  // Demo mode uses a transparent, local template. It does not call an AI model.
-  setTimeout(() => {
-    currentPlan = { input:plan, data:generateDemo(plan) };
+
+  const button = $("generateBtn");
+  button.disabled = true;
+  button.textContent = "Researching with OpenAI…";
+  $("resultStatus").textContent = "GENERATING";
+  $("outputHint").textContent = "The API is generating a tailored research plan.";
+
+  try {
+    const response = await fetch("/api/research", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(plan)
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.error || "The API request failed.");
+    }
+
+    currentPlan = { input: plan, data };
     currentTab = "overview";
+    $("modeStatus").textContent = "● LIVE AI";
+    $("resultStatus").textContent = "AI GENERATED";
+    $("outputHint").textContent =
+      "AI-generated proposal. Novelty and feasibility still need verification.";
     renderTab();
-    $("generateBtn").disabled = false;
-    $("generateBtn").textContent = "Develop my research plan  →";
-  }, 250);
+  } catch (error) {
+    $("resultStatus").textContent = "REQUEST FAILED";
+    $("output").innerHTML =
+      '<div class="callout"><strong>Could not generate the plan</strong><p></p></div>';
+    $("output").querySelector("p").textContent = error.message;
+    $("outputHint").textContent =
+      "Check your deployment, API configuration and server logs.";
+  } finally {
+    button.disabled = false;
+    button.textContent = "Develop my research plan  →";
+  }
 });
+
 
 document.querySelectorAll(".tab").forEach(b => {
   b.addEventListener("click", () => { currentTab = b.dataset.tab; renderTab(); });
