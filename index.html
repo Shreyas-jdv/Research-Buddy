@@ -172,7 +172,7 @@ textarea:focus,select:focus { border-color:#ad8d4b; }
     <div class="brand">
       <div class="logo">⌘</div>
       <div>
-        <h1>Research Co-Founder</h1>
+        <h1>Research Buddy</h1>
         <p>Your AI collaborator for research</p>
       </div>
     </div>
@@ -277,7 +277,7 @@ textarea:focus,select:focus { border-color:#ad8d4b; }
     </section>
   </main>
   <div class="footer">
-    <span>RESEARCH CO-FOUNDER · EARLY PROTOTYPE</span>
+    <span>RESEARCH Buddy · EARLY PROTOTYPE</span>
     <span>Think critically. Test rigorously. Report honestly.</span>
   </div>
 </div>
@@ -489,7 +489,7 @@ $("resetBtn").addEventListener("click", () => {
 function fullText() {
   if (!currentPlan) return "";
   const p = currentPlan.input, d = currentPlan.data;
-  return `RESEARCH CO-FOUNDER — RESEARCH PLAN\n\nIDEA: ${p.idea}\nAREA: ${p.area}\nSCOPE: ${p.level}\nRESOURCES: ${p.resources}\nPRIORITY: ${p.priority}\n\nRESEARCH QUESTION\n${d.question}\n\nHYPOTHESIS\n${d.hypothesis}\n\nRATIONALE\n${d.rationale}\n\nNOVELTY\n${d.novelty}\n\nEXPERIMENTS\n${d.experiments.map((x,i)=>`${i+1}. ${x[0]}\n${x[1]}`).join("\n\n")}\n\nMETRICS\n${d.metrics.map(x=>`${x[0]}: ${x[1]}`).join("\n")}\n\nFALSIFICATION\n${d.falsification}\n\nREPRODUCIBILITY\n${d.protocol.map((x,i)=>`${i+1}. ${x}`).join("\n")}\n\nRISKS\n${d.risks.map(x=>`- ${x}`).join("\n")}\n\nNEXT ACTIONS\n${d.next.map((x,i)=>`${i+1}. ${x}`).join("\n")}\n\nNOTE: Demo template output. No model call, literature search or experiment was performed.`;
+  return `RESEARCH Buddy — RESEARCH PLAN\n\nIDEA: ${p.idea}\nAREA: ${p.area}\nSCOPE: ${p.level}\nRESOURCES: ${p.resources}\nPRIORITY: ${p.priority}\n\nRESEARCH QUESTION\n${d.question}\n\nHYPOTHESIS\n${d.hypothesis}\n\nRATIONALE\n${d.rationale}\n\nNOVELTY\n${d.novelty}\n\nEXPERIMENTS\n${d.experiments.map((x,i)=>`${i+1}. ${x[0]}\n${x[1]}`).join("\n\n")}\n\nMETRICS\n${d.metrics.map(x=>`${x[0]}: ${x[1]}`).join("\n")}\n\nFALSIFICATION\n${d.falsification}\n\nREPRODUCIBILITY\n${d.protocol.map((x,i)=>`${i+1}. ${x}`).join("\n")}\n\nRISKS\n${d.risks.map(x=>`- ${x}`).join("\n")}\n\nNEXT ACTIONS\n${d.next.map((x,i)=>`${i+1}. ${x}`).join("\n")}\n\nNOTE: Demo template output. No model call, literature search or experiment was performed.`;
 }
 
 $("copyBtn").addEventListener("click", async () => {
