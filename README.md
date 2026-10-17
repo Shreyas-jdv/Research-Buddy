@@ -10,7 +10,7 @@ The goal is simple: **make it easier to move from curiosity to rigorous experime
 
 ## 🌐 Live Demo
 
-**Try Research Buddy:** [Open the web application]([https://research-cofounder-1b78-ke1zxl4h7-pumpkin-developers.vercel.app/](https://research-cofounder-1b78-qfp2c3kw6-pumpkin-developers.vercel.app/))
+**Try Research Buddy:** [Open the web application](https://research-cofounder-1b78-qfp2c3kw6-pumpkin-developers.vercel.app/)
 
 
 ## 📸 Website Preview
