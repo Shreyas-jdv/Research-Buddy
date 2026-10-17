@@ -14,12 +14,8 @@ The goal is simple: **make it easier to move from curiosity to rigorous experime
 
 ## 📸 Website Preview
 
-<!-- TODO: Add a screenshot of the deployed Research Buddy application below. -->
-<!-- Suggested location: assets/research-buddy-preview.png -->
-
 ![Research Buddy website preview](assets/research-buddy-preview.png)
 
-*Replace the image path above with your actual screenshot location once you add it to the repository.*
 
 ## ✨ Key Features
 
