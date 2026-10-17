@@ -10,7 +10,7 @@ class handler(BaseHTTPRequestHandler):
     def do_GET(self):
         return self.send_json(200, {
             "status": "ok",
-            "message": "Research Co-Founder API is running. Submit an idea through the website."
+            "message": "Research Buddy API is running. Submit an idea through the website."
         })
         
     def do_POST(self):
@@ -110,7 +110,7 @@ class handler(BaseHTTPRequestHandler):
             }
 
             instructions = """
-You are Research Co-Founder, a rigorous AI research collaborator.
+You are Research Buddy, a rigorous AI research collaborator.
 
 Produce a feasible, critical research plan for the user's idea.
 Do not simply agree with the premise. Identify what would disprove
