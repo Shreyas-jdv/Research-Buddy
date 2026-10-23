@@ -12,10 +12,11 @@ The goal is simple: **make it easier to move from curiosity to rigorous experime
 
 **Try Research Buddy:** [Open the web application](https://research-cofounder-1b78-sable.vercel.app/)
 
+## 📽️ Presentation
 
-## 📸 Website Preview
+Explore the pitch deck to learn more about the problem, vision, proposed solution, and potential impact of Research Buddy.
 
-![Research Buddy website preview](assets/research-buddy-preview.png)
+👉 [Open the Demo pitch Pressentation](https://research-buddy-pitch.netlify.app)
 
 
 ## ✨ Key Features
@@ -193,6 +194,15 @@ Research Buddy provides AI-assisted research suggestions. Its outputs may be ina
 This project is licensed under the [MIT License](LICENSE).
 
 You are free to use, modify, and distribute the software in accordance with the terms of the license.
+
+
+## 👨‍💻 Author
+
+Shreyas Jadhav
+
+AI Developer | Master's student in Artificial Intelligence at Monash University
+
+GitHub: [@shreyas-jdv](https://github.com/Shreyas-jdv)
 
 ---
 
